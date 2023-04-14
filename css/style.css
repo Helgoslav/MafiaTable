@@ -1,0 +1,211 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Murecho&display=swap");
+/*!Обнуление*/
+* { padding: 0; margin: 0; border: 0; }
+
+*, *:before, *:after { -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+:focus, :active { outline: none; }
+
+a:focus, a:active { outline: none; }
+
+nav, footer, header, aside { display: block; }
+
+html, body { height: 100%; width: 100%; font-size: 100%; line-height: 1; font-size: 14px; -ms-text-size-adjust: 100%; -moz-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; }
+
+input, button, textarea { font-family: inherit; }
+
+input::-ms-clear { display: none; }
+
+button { cursor: pointer; }
+
+button::-moz-focus-inner { padding: 0; border: 0; }
+
+a, a:visited { text-decoration: none; }
+
+a:hover { text-decoration: none; }
+
+ul li { list-style: none; }
+
+img { vertical-align: top; }
+
+h1, h2, h3, h4, h5, h6 { font-size: inherit; font-weight: inherit; }
+
+/*!----------*/
+body { font-size: 20px; line-height: 1em; font-family: 'Murecho', sans-serif; background-color: #C6E6C6; }
+
+.wrapper { margin: 10px; }
+
+.game { display: none; }
+
+.game__item { margin-right: 0.1em; overflow: hidden; }
+
+.game__item > div { margin-bottom: 0.1em; }
+
+.game__item:first-child { border-radius: 1em 0 0 1em; }
+
+.game__item:nth-last-child(2) { border-radius: 0 1em 1em 0; }
+
+.game__item:nth-last-child(2) > div > div { padding-right: 0.5em; }
+
+.game__item .player-name, .game__item .player-tools, .game__item .player-role, .game__item .player-action { height: 45px; padding: 5px; }
+
+.game__container { display: -webkit-box; display: -ms-flexbox; display: flex; margin-top: 20px; -webkit-box-align: start; -ms-flex-align: start; align-items: flex-start; -ms-flex-wrap: wrap; flex-wrap: wrap; }
+
+.column-info__container { max-height: 75px; overflow: hidden; background-color: #9c9; text-align: center; padding: 5px; overflow: hidden; }
+
+.game__item > div { background-color: white; }
+
+.game__item ._mafia { background-color: #FFCFCF; }
+
+.game__item ._player-lose { background-color: #997D8D; }
+
+.player-action__container { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; margin-top: -2px; }
+
+.action-check { font-size: 35px; margin: 2px 1.125em 2px 0.125em; }
+
+.action-check_court { margin: 2px 1.25em 2px 0; }
+
+.action-check:last-child { margin-right: 1em; }
+
+.action-check:first-child { margin-left: 0; }
+
+.action-check__input { position: absolute; height: 1px; width: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+.action-check__box { position: absolute; width: 1em; height: 1em; background-color: wheat; background-repeat: no-repeat; background-position: center; background-size: 0.8em 0.8em; -webkit-box-shadow: 0 0 4px 2px gray, 0 0 0 1px black; box-shadow: 0 0 4px 2px gray, 0 0 0 1px black; border-radius: 0.1em; cursor: pointer; }
+
+.action-check__input + .action-check__box { -webkit-transition: background 0.1s linear; transition: background 0.1s linear; }
+
+.action-check__input:focus + .action-check__box { -webkit-box-shadow: 0 0 4px 2px gray; box-shadow: 0 0 4px 2px gray; border: 1px solid black; }
+
+.action-check__input:hover + .action-check__box { background-color: #9c9; }
+
+.action-check__input:checked + .action-check__box { background-color: #BAE6BA; }
+
+.action-check__input:disabled + .action-check__box { cursor: default; }
+
+.action-check__input:disabled:checked + .action-check__box { background-color: wheat; }
+
+.action-check_mafia .action-check__box { background-image: url("../svg/mafia/mafia-gun.svg"); }
+
+.action-check_mafia .action-check__input:checked + .action-check__box, .action-check_mafia .action-check__input:disabled:checked + .action-check__box { background-image: url("../svg/mafia/mafia-gun-checked.svg"); }
+
+.action-check_mafia .action-check__input:disabled + .action-check__box { background-image: url("../svg/mafia/mafia-gun-disabled.svg"); }
+
+.action-check_don .action-check__box { background-image: url("../svg/don/don-visit.svg"); }
+
+.action-check_don .action-check__input:checked + .action-check__box, .action-check_don .action-check__input:disabled:checked + .action-check__box { background-image: url("../svg/don/don-visit-checked.svg"); }
+
+.action-check_don .action-check__input:disabled + .action-check__box { background-image: url("../svg/don/don-visit-disabled.svg"); }
+
+.action-check_freak .action-check__box { background-image: url("../svg/freak/freak-gun.svg"); }
+
+.action-check_freak .action-check__input:checked + .action-check__box, .action-check_freak .action-check__input:disabled:checked + .action-check__box { background-image: url("../svg/freak/freak-gun-ckecked.svg"); }
+
+.action-check_freak .action-check__input:disabled + .action-check__box { background-image: url("../svg/freak/freak-gun-disabled.svg"); }
+
+.action-check_сommissioner .action-check__box { background-image: url("../svg/commissioner/commissioner.svg"); }
+
+.action-check_сommissioner .action-check__input:checked + .action-check__box, .action-check_сommissioner .action-check__input:disabled:checked + .action-check__box { background-image: url("../svg/commissioner/commissioner-checked.svg"); }
+
+.action-check_сommissioner .action-check__input:disabled + .action-check__box { background-image: url("../svg/commissioner/commissioner-disabled.svg"); }
+
+.action-check_doctor .action-check__box { background-image: url("../svg/doctor/doctor.svg"); }
+
+.action-check_doctor .action-check__input:checked + .action-check__box, .action-check_doctor .action-check__input:disabled:checked + .action-check__box { background-image: url("../svg/doctor/doctor-checked.svg"); }
+
+.action-check_doctor .action-check__input:disabled + .action-check__box { background-image: url("../svg/doctor/doctor-disabled.svg"); }
+
+.action-check_court .action-check__box { background-image: url("../svg/court/court.svg"); }
+
+.action-check_court .action-check__input:checked + .action-check__box, .action-check_court .action-check__input:disabled:checked + .action-check__box { background-image: url("../svg/court/court-checked.svg"); }
+
+.action-check_court .action-check__input:disabled + .action-check__box { background-image: url("../svg/court/court-disabled.svg"); }
+
+.player-name__input { font-size: inherit; width: 10em; border: none; outline: none; margin-top: 0.25em; border-bottom: 0.05em solid gray; background-color: transparent; -webkit-transition: border 0.1s linear; transition: border 0.1s linear; }
+
+.player-name__input:hover { border-bottom: 0.05em solid #9c9; }
+
+.player-name__input:focus { border-bottom: 0.1em solid black; -webkit-transition: border 0s; transition: border 0s; }
+
+.player-name__input:disabled { color: black; border-bottom: 0.05em solid gray; }
+
+.player-role__select { font-size: inherit; background-color: transparent; outline: none; padding: 5.5px 0px 4px 5px; border-bottom: 1px solid gray; cursor: pointer; }
+
+.player-role__select:hover { -webkit-transition: border 0.1s linear; transition: border 0.1s linear; border-bottom: 1px solid #9c9; }
+
+.player-role__select:disabled { -webkit-appearance: none; -moz-appearance: none; appearance: none; padding: 5.5px 5px 4px 5px; border: none; cursor: default; color: black; }
+
+.player-role__select:focus { border-bottom: 2px solid black; -webkit-transition: border 0s; transition: border 0s; }
+
+.control__button { font-size: inherit; min-width: 8.75em; height: 1.75em; border-radius: 0.175em; -webkit-box-shadow: 0 0 0.2em 0.1em gray, 0 0 0 0.05em black; box-shadow: 0 0 0.2em 0.1em gray, 0 0 0 0.05em black; margin: 0.25em 0.25em 0.25em 0; background-color: white; -webkit-transition: background-color 0.1s linear; transition: background-color 0.1s linear; }
+
+.control__button:hover { background-color: #9c9; }
+
+.control__button:focus { -webkit-box-shadow: 0 0 0.2em 0.1em gray; box-shadow: 0 0 0.2em 0.1em gray; border: 0.075em black solid; }
+
+.control__button:active { -webkit-transition: background-color 0s; transition: background-color 0s; background-color: #BAE6BA; }
+
+.control__button:disabled { background-color: gray; cursor: default; }
+
+.control__button_addPlayer { min-width: 1.75em; }
+
+.control__button_giveRoles { display: none; }
+
+.control__button_startGame { display: none; }
+
+.control__button_resetGame { display: none; }
+
+.control__img { height: 80%; }
+
+.control-round.control { display: none; }
+
+.control-round.control .control__container { margin-left: 0.1em; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; }
+
+.control-round.control .control__button { min-width: 3em; }
+
+.player-tools__container { display: -webkit-box; display: -ms-flexbox; display: flex; }
+
+.player-tools__container_buttons { margin-left: 0.25em; }
+
+.player-tools__container_small-buttons { margin-left: 0.25em; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; }
+
+.player-tools__info { height: 1.75em; width: 1.75em; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
+
+.player-tools__button { font-size: inherit; -webkit-transition: background 0.1s linear; transition: background 0.1s linear; -webkit-transition: background-color 0s; transition: background-color 0s; -webkit-box-shadow: 0 0 0.2em 0.1em gray, 0 0 0 0.05em black; box-shadow: 0 0 0.2em 0.1em gray, 0 0 0 0.05em black; border-radius: 0.175em; cursor: pointer; }
+
+.player-tools__button:focus { -webkit-box-shadow: 0 0 0.2em 0.1em gray; box-shadow: 0 0 0.2em 0.1em gray; border: 0.05em black solid; }
+
+.player-tools__button:hover { -webkit-transition: background-color 0.1s linear; transition: background-color 0.1s linear; background-color: #9c9; }
+
+.player-tools__button:active { -webkit-transition: background-color 0s; transition: background-color 0s; background-color: #BAE6BA; }
+
+.player-tools__button:disabled { background-color: gray; cursor: default; }
+
+.player-tools__button-big { height: 1.75em; width: 1.75em; }
+
+.player-tools__button-small { height: 0.75em; width: 1em; }
+
+.player-tools__button-remove { background: url("../svg/button/trash.svg") center/1.4em no-repeat white; }
+
+.player-tools__button-remove:hover { background-image: url("../svg/button/trash-hover.svg"); }
+
+.player-tools__button-remove:active { background-image: url("../svg/button/trash-hover.svg"); }
+
+.player-tools__button-remove:disabled { background-image: url("../svg/button/trash.svg"); }
+
+.player-tools__button-up { background: url("../svg/button/up-arrow.svg") center no-repeat white; }
+
+.player-tools__button-up:hover { background-image: url("../svg/button/up-arrow-hover.svg"); }
+
+.player-tools__button-up:active { background-image: url("../svg/button/up-arrow-hover.svg"); }
+
+.player-tools__button-up:disabled { background-image: url("../svg/button/up-arrow.svg"); }
+
+.player-tools__button-down { margin-top: 0.25em; background: url("../svg/button/down-arrow.svg") center no-repeat white; }
+
+.player-tools__button-down:hover { background-image: url("../svg/button/down-arrow-hover.svg"); }
+
+.player-tools__button-down:active { background-image: url("../svg/button/down-arrow-hover.svg"); }
+
+.player-tools__button-down:disabled { background-image: url("../svg/button/down-arrow.svg"); }
