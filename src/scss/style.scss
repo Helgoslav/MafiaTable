@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Murecho&display=swap');
 @import "nullstyle.scss";
 
-
-
 $height: 45px;
 
 body {
@@ -207,7 +205,7 @@ body {
 		border-bottom: 0.05em solid gray;
 		background-color: transparent;
 		transition: border 0.1s linear;
-		
+
 		&:hover {
 			border-bottom: 0.05em solid #9c9;
 		}
@@ -257,7 +255,7 @@ body {
 		margin: 0.25em 0.25em 0.25em 0;
 		background-color: white;
 		transition: background-color 0.1s linear;
-		
+
 		&:hover{
 			background-color: #9c9;
 		}
@@ -358,7 +356,7 @@ body {
 			background-image: url("../svg/button/trash-hover.svg");
 		}
 		&:active {
-			
+
 			background-image: url("../svg/button/trash-hover.svg");
 		}
 		&:disabled {
