@@ -2,7 +2,7 @@
 
 import $ from 'jquery'
 
-//Сделано пожилым господином Kappel, спецально для силача Трешмана
+//Сделано пожилым господином Kappel, специально для силача Трешмана
 export default function startGame () {
   $(document).ready(function () {
     let currentRound = 0;
@@ -23,7 +23,7 @@ export default function startGame () {
         $buttonStartGame.show();
         $buttonResetGame.show().prop("disabled", true);
       }
-      const playerTools =
+      const playerTools = /*html*/
         `<div class="player-tools">
 				<div class="player-tools__container">
 					<div class="player-tools__info">
@@ -41,10 +41,7 @@ export default function startGame () {
       $(".game__container > div:nth-child(1)").append(playerTools);
 
 
-      const playerName =
-        /*`<div class="player_name">
-          <input class="player_name__input" type="text">
-        </div>`;*/
+      const playerName =/*html*/
         `<div class="player-name">
 				<div class="player-name__container">
 					<input class="player-name__input" type="text">
@@ -164,7 +161,7 @@ export default function startGame () {
         }
         //Создаю раунд дня
         nextRound();
-        //Забираю прослушку чекбоксам ночных действий
+        //Забираю прослушку чекбокса ночных действий
         removeCheckboxEvent(currentRound - 1);
       } else if (currentRound % 2 == 0) { //Ночь, обрабатываю предыдущий день
         for (let i = 1; i <= playersNumbers(); ++i) {
@@ -204,7 +201,7 @@ export default function startGame () {
           }
         }
       } else if (currentRound % 2 == 0) { //Ночь, обрабатываю текущую ночь
-        //Включаю кноки выбранных ночных действий
+        //Включаю кнопки выбранных ночных действий
         const $checkboxActions = getColumn(currentRound).find(".action-check__input");
         $checkboxActions.each(function (index, element) {
           if ($(element).is(":checked") == false) {
@@ -227,7 +224,7 @@ export default function startGame () {
     });
 
     function setCheckboxEvent(indexRound) {
-      const arr = ["mafia", "сommissioner", "don", "doctor", "freak"];
+      const arr = ["mafia", "commissioner", "don", "doctor", "freak"];
       const $checkboxActions = getColumn(indexRound);
 
       for (let i = 0; i < arr.length; ++i) {
@@ -285,6 +282,7 @@ export default function startGame () {
         $toolsColumn.last().find(".player-tools__button-down").prop("disabled", true)
       }
       if ($removeButton != null) {
+        // @ts-ignore
         $removeButton.click(function (e) {
           e.preventDefault();
           const $currentPlayerStr = getStr(getIndexStr($buttons), true);
@@ -301,6 +299,7 @@ export default function startGame () {
         });
       }
       if ($upButton != null) {
+        // @ts-ignore
         $upButton.click(function (e) {
           e.preventDefault();
           const indexStr = getIndexStr($buttons);
@@ -321,6 +320,7 @@ export default function startGame () {
         });
       }
       if ($downButton != null) {
+        // @ts-ignore
         $downButton.click(function (e) {
           e.preventDefault();
           const indexStr = getIndexStr($buttons);
@@ -390,7 +390,7 @@ export default function startGame () {
       $prevRound.parent().after(next);
     }
     function removeCheckboxEvent(indexRound) {
-      const arr = ["mafia", "сommissioner", "don", "doctor", "freak"];
+      const arr = ["mafia", "commissioner", "don", "doctor", "freak"];
       const $checkboxActions = getColumn(indexRound);
 
       for (let i = 0; i < arr.length; ++i) {
@@ -480,45 +480,45 @@ export default function startGame () {
         optionalRoles += " _mafia";
       }
       const selectedActiveRoles = getActiveSelectedRoles();
-      let result =
+      let result = /*html*/
         `<div class="player-action ${optionalRoles}">
 				<div class="player-action__container">`;
       if (flagLose == false && (selectedActiveRoles.includes(1) || selectedActiveRoles.includes(3))) {
-        result +=
+        result += /*html*/
           `<label class="action-check action-check_mafia">
 					<input class="action-check__input" type="checkbox">
 					<span class="action-check__box"></span>
 				</label>`;
       }
       if (selectedActiveRoles.includes(2)) {
-        result +=
-          `<label class="action-check action-check_сommissioner">
+        result += /*html*/
+          `<label class="action-check action-check_commissioner">
 					<input class="action-check__input" type="checkbox">
 					<span class="action-check__box"></span>
 				</label>`;
       }
       if (selectedActiveRoles.includes(3)) {
-        result +=
+        result += /*html*/
           `<label class="action-check action-check_don">
 					<input class="action-check__input" type="checkbox">
 					<span class="action-check__box"></span>
 				</label>`;
       }
       if (flagLose == false && selectedActiveRoles.includes(4)) {
-        result +=
+        result += /*html*/
           `<label class="action-check action-check_doctor">
 					<input class="action-check__input" type="checkbox">
 					<span class="action-check__box"></span>
 				</label>`;
       }
       if (flagLose == false && selectedActiveRoles.includes(5)) {
-        result +=
+        result += /*html*/
           `<label class="action-check action-check_freak">
 					<input class="action-check__input" type="checkbox">
 					<span class="action-check__box"></span>
 				</label>`;
       }
-      result +=
+      result += /*html*/
         `</div>
 			</div>`;
       return result;
@@ -529,7 +529,7 @@ export default function startGame () {
     function enablePlayer(index) {
       getStr(index, true).removeClass("_player-lose");
     }
-    //Возвращает true или false если игрок в конкретной ночи выживыет или нет, соответственно
+    //Возвращает true или false если игрок в конкретной ночи выживет или нет, соответственно
     function nightGames(indexStr, indexColumn) {
       const $player = getElem(indexStr, indexColumn);
       //Считываю чекбоксы (true/false) действий
@@ -546,6 +546,7 @@ export default function startGame () {
       const $selectedRoles = getColumn(3, true).find(".player-role__option:selected");
       $selectedRoles.each(function (index, element) {
         if ($(this).val() != 0) {
+          // @ts-ignore
           valuesSelectedRoles.push(parseInt($(this).val()));
         }
       });
@@ -557,6 +558,7 @@ export default function startGame () {
       const $selectedActiveRoles = getColumn(3, true).parent().children("div:not(._player-lose)").find(".player-role__option:selected");
       $selectedActiveRoles.each(function (index, element) {
         if ($(element).val() != 0) {
+          // @ts-ignore
           valuesActiveSelectedRoles.push(parseInt($(element).val()));
         }
       });
@@ -596,8 +598,8 @@ export default function startGame () {
         $gameItem = $tableSelector;
       }
 
-      const countColmns = $(".game__container .game__item").length;
-      for (let i = 1; i <= countColmns; ++i) {
+      const countColumns = $(".game__container .game__item").length;
+      for (let i = 1; i <= countColumns; ++i) {
         if ($gameItem.is(getColumn(i, true).parent()) === true) {
           return i;
         }
