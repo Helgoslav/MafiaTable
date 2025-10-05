@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@svg/*": ["src/assets/svg/*"]
+    },
+    "checkJs": true,
+    "types": ["vite/client"],
+  },
+  "exclude": ["node_modules", "dist", "**/dist/*"]
+}

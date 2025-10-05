@@ -1,0 +1,397 @@
+@import url('https://fonts.googleapis.com/css2?family=Murecho&display=swap');
+
+$height: 45px;
+
+body {
+  font-size: 20px;
+  line-height: 1em;
+  font-family: 'Murecho', sans-serif;
+  background-color: #c6e6c6;
+}
+
+.wrapper {
+  margin: 10px;
+}
+.game {
+  display: none;
+}
+.game__item {
+  margin-right: 0.1em;
+  & > div {
+    margin-bottom: 0.1em;
+  }
+  &:first-child {
+    border-radius: 1em 0 0 1em;
+  }
+  &:nth-last-child(2) {
+    border-radius: 0 1em 1em 0;
+    & > div > div {
+      padding-right: 0.5em;
+    }
+  }
+  overflow: hidden;
+  .player-name,
+  .player-tools,
+  .player-role,
+  .player-action {
+    height: $height;
+    padding: 5px;
+  }
+}
+.game__container {
+  display: flex;
+  margin-top: 20px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.column-info {
+  &__container {
+    max-height: 75px;
+    overflow: hidden;
+    background-color: #9c9;
+    text-align: center;
+    padding: 5px;
+    overflow: hidden;
+  }
+}
+.game__item {
+  & > div {
+    background-color: white;
+  }
+  ._mafia {
+    background-color: #ffcfcf;
+  }
+  ._player-lose {
+    background-color: #997d8d;
+  }
+}
+
+.player-action {
+  &__container {
+    display: flex;
+    justify-content: center;
+    margin-top: -2px;
+  }
+}
+.action-check {
+  font-size: 35px;
+  margin: 2px 1.125em 2px 0.125em;
+  &_court {
+    margin: 2px 1.25em 2px 0;
+  }
+  &:last-child {
+    margin-right: 1em;
+  }
+  &:first-child {
+    margin-left: 0;
+  }
+  &__input {
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+  &__box {
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    background-color: wheat;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 0.8em 0.8em;
+    box-shadow: 0 0 4px 2px gray, 0 0 0 1px black;
+    border-radius: 0.1em;
+    cursor: pointer;
+  }
+  &__input + &__box {
+    transition: background 0.1s linear;
+  }
+  &__input:focus + &__box {
+    box-shadow: 0 0 4px 2px gray;
+    border: 1px solid black;
+  }
+  &__input:hover + &__box {
+    background-color: #9c9;
+  }
+  &__input:checked + &__box {
+    background-color: #bae6ba;
+  }
+  &__input:disabled + &__box {
+    cursor: default;
+  }
+  &__input:disabled:checked + &__box {
+    background-color: wheat;
+  }
+}
+
+.action-check_mafia {
+  .action-check__box {
+    background-image: url('@svg/mafia/mafia-gun.svg');
+  }
+  .action-check__input:checked + .action-check__box,
+  .action-check__input:disabled:checked + .action-check__box {
+    background-image: url('@svg/mafia/mafia-gun-checked.svg');
+  }
+  .action-check__input:disabled + .action-check__box {
+    background-image: url('@svg/mafia/mafia-gun-disabled.svg');
+  }
+}
+
+.action-check_don {
+  .action-check__box {
+    background-image: url('@svg/don/don-visit.svg');
+  }
+  .action-check__input:checked + .action-check__box,
+  .action-check__input:disabled:checked + .action-check__box {
+    background-image: url('@svg/don/don-visit-checked.svg');
+  }
+  .action-check__input:disabled + .action-check__box {
+    background-image: url('@svg/don/don-visit-disabled.svg');
+  }
+}
+
+.action-check_freak {
+  .action-check__box {
+    background-image: url('@svg/freak/freak-gun.svg');
+  }
+  .action-check__input:checked + .action-check__box,
+  .action-check__input:disabled:checked + .action-check__box {
+    background-image: url('@svg/freak/freak-gun-checked.svg');
+  }
+  .action-check__input:disabled + .action-check__box {
+    background-image: url('@svg/freak/freak-gun-disabled.svg');
+  }
+}
+.action-check_commissioner {
+  .action-check__box {
+    background-image: url('@svg/commissioner/commissioner.svg');
+  }
+  .action-check__input:checked + .action-check__box,
+  .action-check__input:disabled:checked + .action-check__box {
+    background-image: url('@svg/commissioner/commissioner-checked.svg');
+  }
+  .action-check__input:disabled + .action-check__box {
+    background-image: url('@svg/commissioner/commissioner-disabled.svg');
+  }
+}
+.action-check_doctor {
+  .action-check__box {
+    background-image: url('@svg/doctor/doctor.svg');
+  }
+  .action-check__input:checked + .action-check__box,
+  .action-check__input:disabled:checked + .action-check__box {
+    background-image: url('@svg/doctor/doctor-checked.svg');
+  }
+  .action-check__input:disabled + .action-check__box {
+    background-image: url('@svg/doctor/doctor-disabled.svg');
+  }
+}
+.action-check_court {
+  .action-check__box {
+    background-image: url('@svg/court/court.svg');
+  }
+  .action-check__input:checked + .action-check__box,
+  .action-check__input:disabled:checked + .action-check__box {
+    background-image: url('@svg/court/court-checked.svg');
+  }
+  .action-check__input:disabled + .action-check__box {
+    background-image: url('@svg/court/court-disabled.svg');
+  }
+}
+
+.player-name {
+  &__input {
+    font-size: inherit;
+    width: 10em;
+
+    border: none;
+    outline: none;
+    margin-top: 0.25em;
+    border-bottom: 0.05em solid gray;
+    background-color: transparent;
+    transition: border 0.1s linear;
+
+    &:hover {
+      border-bottom: 0.05em solid #9c9;
+    }
+    &:focus {
+      border-bottom: 0.1em solid black;
+      transition: border 0s;
+    }
+    &:disabled {
+      color: black;
+      border-bottom: 0.05em solid gray;
+    }
+  }
+}
+.player-role {
+  &__select {
+    font-size: inherit;
+    background-color: transparent;
+    outline: none;
+    padding: 5.5px 0px 4px 5px;
+    border-bottom: 1px solid gray;
+    cursor: pointer;
+    &:hover {
+      transition: border 0.1s linear;
+      border-bottom: 1px solid #9c9;
+    }
+    &:disabled {
+      appearance: none;
+      padding: 5.5px 5px 4px 5px;
+      border: none;
+      cursor: default;
+      color: black;
+    }
+    &:focus {
+      border-bottom: 2px solid black;
+      transition: border 0s;
+    }
+  }
+}
+
+.control {
+  &__button {
+    font-size: inherit;
+    min-width: 8.75em;
+    height: 1.75em;
+    border-radius: 0.175em;
+    box-shadow: 0 0 0.2em 0.1em gray, 0 0 0 0.05em black;
+    margin: 0.25em 0.25em 0.25em 0;
+    background-color: white;
+    transition: background-color 0.1s linear;
+
+    &:hover {
+      background-color: #9c9;
+    }
+    &:focus {
+      box-shadow: 0 0 0.2em 0.1em gray;
+      border: 0.075em black solid;
+    }
+    &:active {
+      transition: background-color 0s;
+      background-color: #bae6ba;
+    }
+    &:disabled {
+      background-color: gray;
+      cursor: default;
+    }
+  }
+  &__button_addPlayer {
+    min-width: 1.75em;
+  }
+  &__button_giveRoles {
+    display: none;
+  }
+  &__button_startGame {
+    display: none;
+  }
+  &__button_resetGame {
+    display: none;
+  }
+  &__img {
+    height: 80%;
+  }
+}
+.control-round.control {
+  display: none;
+  .control__container {
+    margin-left: 0.1em;
+    display: flex;
+    flex-direction: column;
+  }
+  .control__button {
+    min-width: 3em;
+  }
+}
+.player-tools {
+  &__container {
+    display: flex;
+  }
+  &__container_buttons {
+    margin-left: 0.25em;
+  }
+  &__container_small-buttons {
+    margin-left: 0.25em;
+    display: flex;
+    flex-direction: column;
+  }
+  &__info {
+    height: 1.75em;
+    width: 1.75em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__button {
+    font-size: inherit;
+    transition: background 0.1s linear;
+    transition: background-color 0s;
+    box-shadow: 0 0 0.2em 0.1em gray, 0 0 0 0.05em black;
+    border-radius: 0.175em;
+    cursor: pointer;
+    &:focus {
+      box-shadow: 0 0 0.2em 0.1em gray;
+      border: 0.05em black solid;
+    }
+    &:hover {
+      transition: background-color 0.1s linear;
+      background-color: #9c9;
+    }
+    &:active {
+      transition: background-color 0s;
+      background-color: #bae6ba;
+    }
+    &:disabled {
+      background-color: gray;
+      cursor: default;
+    }
+  }
+  &__button-big {
+    height: 1.75em;
+    width: 1.75em;
+  }
+  &__button-small {
+    height: 0.75em;
+    width: 1em;
+  }
+  &__button-remove {
+    background: url('@svg/button/trash.svg') center/1.4em no-repeat white;
+    &:hover {
+      background-image: url('@svg/button/trash-hover.svg');
+    }
+    &:active {
+      background-image: url('@svg/button/trash-hover.svg');
+    }
+    &:disabled {
+      background-image: url('@svg/button/trash.svg');
+    }
+  }
+  &__button-up {
+    background: url('@svg/button/up-arrow.svg') center no-repeat white;
+    &:hover {
+      background-image: url('@svg/button/up-arrow-hover.svg');
+    }
+    &:active {
+      background-image: url('@svg/button/up-arrow-hover.svg');
+    }
+    &:disabled {
+      background-image: url('@svg/button/up-arrow.svg');
+    }
+  }
+  &__button-down {
+    margin-top: 0.25em;
+    background: url('@svg/button/down-arrow.svg') center no-repeat white;
+    &:hover {
+      background-image: url('@svg/button/down-arrow-hover.svg');
+    }
+    &:active {
+      background-image: url('@svg/button/down-arrow-hover.svg');
+    }
+    &:disabled {
+      background-image: url('@svg/button/down-arrow.svg');
+    }
+  }
+}
